@@ -30,6 +30,10 @@ public class ArticleComment {
     @JsonIgnore
     private char deleteYn;
 
+    // 새로 추가
+    @Column(name = "comment", columnDefinition = "TEXT")
+    private String comment;
+
     @Column(name = "comment_depth")
     private int commentDepth;
 

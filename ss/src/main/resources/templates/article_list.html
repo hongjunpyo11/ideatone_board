@@ -1,0 +1,33 @@
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        xmlns:th="http://thymeleaf.org"
+        layout:decorate="~{layout}">
+
+    <div layout:fragment="content" class="container my-3">
+        <table class="table">
+            <thead class="table-dark">
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>작성일시</th>
+                <th>지역명</th>
+                <th>조회수</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="article, loop : ${articleList}">
+                <td th:text="${loop.count}"></td>
+                <td>
+                    <a th:href="@{|/article/detail/${article.id}|}" th:text="${article.title}"></a>
+                </td>
+                <td th:text="${#temporals.format(article.create, 'yy-MM-dd HH:mm')}"></td>
+                <td th:text="${article.areaName}"></td>
+                <td th:text="${article.hitCount}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <a th:href="@{/article/create}" class="btn btn-primary">게시글 작성하기</a>
+</div>
+
+</html>
