@@ -15,7 +15,14 @@
                     <div th:text="${#temporals.format(article.create, 'yyyy-MM-dd HH:mm')}"></div>
                 </div>
             </div>
+            <div>
+                <a href="#" th:href="@{/article/modify/{id} (id=${article.id})}" class="btn btn-primary" role="button">수정</a>
+                <a href="#" th:href="@{/article/delete/{id} (id=${article.id})}" class="btn btn-primary" role="button">삭제</a>
+            </div>
         </div>
+    </div>
+    <div id="resultDiv">
+        <p th:if="${msg}!=null" th:text="${msg}"></p>
     </div>
 
     <!-- 답변의 갯수 표시 -->
@@ -44,5 +51,30 @@
     </form>
 
 </div>
+
+<!--<script layout:fragment="script" type='text/javascript'>-->
+<!--<script th:inline="javascript" type='text/javascript'>-->
+
+<!--    function dataSend() {-->
+<!--        var data = $("#input").val();-->
+<!--        var messageDTO = {-->
+<!--            result: data-->
+<!--        };-->
+<!--        $.ajax({-->
+<!--            type: "delete",-->
+<!--            url: url,-->
+<!--            dataType: 'text'-->
+<!--        }).done(function (result) {-->
+<!--            if (result == "ok") {-->
+<!--                alert("삭제에 성공하였습니다.");-->
+<!--                // location.href ~~~-->
+<!--            } else {-->
+<!--                alert("삭제에 실패하였습니다.");-->
+<!--            }-->
+<!--        }).fail(function (error) {-->
+<!--            alert("삭제에 실패하였습니다.");-->
+<!--        });-->
+<!--    }-->
+<!--</script>-->
 
 </html>

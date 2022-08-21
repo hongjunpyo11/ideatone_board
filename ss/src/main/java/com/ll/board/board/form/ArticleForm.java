@@ -10,7 +10,9 @@ import java.time.LocalDateTime;
 
 @AllArgsConstructor
 @Getter
+@Setter
 public class ArticleForm {
+    private Long id;
     @NotEmpty(message = "제목은 필수항목입니다.")
     @Size(max = 200, message = "제목을 200자 이하로 입력해주세요.")
     private String title;

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.stream.IntStream;
 
 @SpringBootTest
 class BoardTest {
@@ -38,6 +39,20 @@ class BoardTest {
         ArticleToHashtag articleToHashtag2 = articleToHashtagRepository.save(ArticleToHashtag.builder().id(2L).hashtag(testHashtag2).article(article).build());
     }
 
+    @Test
+    void createManySampleDate() {
+        boolean run = false;
 
+        if (run == false) return;
+
+        IntStream.rangeClosed(1, 300).forEach(id -> {
+            Article a = new Article();
+            a.setTitle("%d번 게시글".formatted(id));
+            a.setContent("%d번 질문의 내용".formatted(id));
+            a.setCreate(LocalDateTime.now());
+            a.setUpdate(LocalDateTime.now());
+            articleRepository.save(a);
+        });
+    }
 
 }
